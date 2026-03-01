@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>noexit. | Elite Systems</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;600;800&family=Playfair+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <div class="grain"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <canvas id="preloader-glcanvas"></canvas>
+        <div class="pre-content">
+            <div class="pre-logo glitch" data-text="noexit.">noexit.</div>
+            <div class="pre-bar-wrap">
+                <div class="pre-bar-bg">
+                    <div class="pre-bar-fill" id="pFill"></div>
+                </div>
+                <div class="pre-counter" id="pCount">000</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CURSOR CUSTOMIZADO -->
+    <div class="cursor" id="cursor"></div>
+
+    <button id="theme-btn" aria-label="Toggle theme">
+        <span id="tLabel">Light</span>
+        <div id="liquid-metal">
+            <div class="outline">
+                <svg class="svg-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path
+                        d="M523.6 863.6C329.8 863.6 172 705.8 172 512c0-154.5 98.7-285.5 238-335 15.1-5.3 32-2.3 43.4 8.7 11.4 11 15 27.6 9.4 42.1-40.4 105.9-39.7 221.7 4.1 324.9 44.4 104.5 142.1 176.6 250.7 186.2 16.2 1.5 29.5 12.3 34.6 27.6 5.2 15.3-0.2 32-13.8 41.5C671.1 846.5 599.3 863.6 523.6 863.6z">
+                    </path>
+                </svg>
+            </div>
+        </div>
+    </button>
+
+    <!-- WORK HOVER — outside #site-frame (CSS transform breaks position:fixed) -->
+    <div class="w-hover" id="wHover">
+        <div class="w-hover-in" id="wHoverIn">
+            <div class="w-hover-grad"></div>
+            <span class="w-hover-lbl" id="wHoverLbl"></span>
+        </div>
+    </div>
+
+
+
+    <div id="site-frame">
+        <!-- CANVAS 3D LÍQUIDO + BURACO NEGRO -->
+        <div id="webgl-container"></div>
+        <div class="bg-overlay"></div>
+
+        <div class="content-layer">
+            <nav class="top-nav">
+                <div class="logo-wrapper">
+                    <div class="logo glitch hover-t" data-text="noexit.">noexit.</div>
+                    <div id="logo-canvas-container">
+                        <canvas id="logo-canvas"></canvas>
+                    </div>
+                </div>
+                <div class="nav-center">
+                    <!-- SVG ANIMADO - PROCESS -->
+                    <span class="nav-link hover-t">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <g class="anim-spin">
+                                <circle cx="12" cy="12" r="8" stroke-dasharray="12 8" stroke-linecap="round"></circle>
+                            </g>
+                            <circle cx="12" cy="12" r="2" fill="currentColor" class="anim-pulse"></circle>
+                        </svg>
+                        <span class="nav-text">Process</span>
+                    </span>
+                    <!-- SVG ANIMADO - SYSTEMS / WORK -->
+                    <span class="nav-link hover-t">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="6" height="6" rx="1" class="anim-node"></rect>
+                            <rect x="15" y="15" width="6" height="6" rx="1" class="anim-node"
+                                style="animation-delay: 1.5s;"></rect>
+                            <path d="M9 6h6v9" stroke-dasharray="4 4" class="anim-flow"></path>
+                        </svg>
+                        <span class="nav-text">Work</span>
+                    </span>
+                    <!-- SVG ANIMADO - JOURNAL -->
+                    <span class="nav-link hover-t">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M6 6h12" stroke-linecap="round"></path>
+                            <path d="M6 12h8" stroke-linecap="round"></path>
+                            <path d="M6 18h4" stroke-linecap="round"></path>
+                            <line x1="13" y1="17" x2="13" y2="19" stroke-width="2" stroke-linecap="round"
+                                class="anim-blink"></line>
+                        </svg>
+                        <span class="nav-text">Journal</span>
+                    </span>
+                    <!-- SVG ANIMADO - CONTACT -->
+                    <span class="nav-link hover-t">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="6" width="16" height="12" rx="2" class="anim-node"></rect>
+                            <path d="M4 8l8 5 8-5" stroke-dasharray="24" class="anim-flow"></path>
+                        </svg>
+                        <span class="nav-text">Contact</span>
+                    </span>
+                </div>
+                <div id="navWrap" style="position:relative;display:inline-block">
+                    <button class="btn-talk hover-t">Order Custom</button>
+                </div>
+            </nav>
+
+            <section class="hero inner">
+                <div class="hero-eye">[ EST. 2024 — DIGITAL SYSTEMS ]</div>
+                <h1 class="hero-title hover-t">
+                    <span class="word-d">Digital</span>
+                    <span class="word-o glitch" data-text="Obsidian.">Obsidian.</span>
+                </h1>
+                <p class="glitch3d hover-t">We build systems that respond to interaction, generating unpredictable
+                    digital landscapes that templates strip away.</p>
+                <div class="hero-meta">
+                    <span>Available for projects</span>
+                    <span id="liveTime">--:--:-- UTC</span>
+                </div>
+            </section>
+
+            <!-- ②  MESH + MARQUEE -->
+            <div class="stack-card" data-index="1" style="--card-index:1">
+                <div class="mesh-marquee-zone">
+
+                    <div class="marquee-zone hover-t">
+                        <div class="marquee-ct">
+                            <div class="marquee-t">NEURAL ARCHITECTURE — VOID DYNAMICS — CHROMATIC DISSONANCE —&nbsp;
+                            </div>
+                            <div class="marquee-t">NEURAL ARCHITECTURE — VOID DYNAMICS — CHROMATIC DISSONANCE —&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ③  STATS -->
+            <div class="stats-zone">
+                <div class="stats-inner">
+                    <div class="stat-item hover-t"><span class="stat-num" data-target="47" data-suf="">0</span><span
+                            class="stat-lbl">Projects Shipped</span></div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item hover-t"><span class="stat-num" data-target="98" data-suf="%">0</span><span
+                            class="stat-lbl">Client Satisfaction</span></div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item hover-t"><span class="stat-num" data-target="12" data-suf="">0</span><span
+                            class="stat-lbl">Awards Won</span></div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item hover-t"><span class="stat-num" data-target="5" data-suf="+">0</span><span
+                            class="stat-lbl">Years Active</span></div>
+                </div>
+            </div>
+
+            <!-- ④  WORK -->
+            <div class="stack-card" data-index="2" style="--card-index:2">
+                <div class="work-zone">
+                    <section class="work-inner">
+                        <div class="sec-head">
+                            <div>
+                                <div class="sec-label">[ 01 — Selected Work ]</div>
+                                <h2 class="sec-title">Recent<br>Projects.</h2>
+                            </div>
+                            <a class="sec-link hover-t" href="#">All Work <span>↗</span></a>
+                        </div>
+                        <div class="work-list">
+                            <div class="work-item hover-t" data-em="⬛"
+                                data-bg="linear-gradient(135deg,#080808,#181818)">
+                                <span class="work-num">01</span><span class="work-name">Void Protocol</span>
+                                <span class="work-type">Brand System / Digital</span><span class="work-year">2025</span>
+                            </div>
+                            <div class="work-item hover-t" data-em="🔴"
+                                data-bg="linear-gradient(135deg,#3d0000,#8c0000)">
+                                <span class="work-num">02</span><span class="work-name">Crimson Engine</span>
+                                <span class="work-type">Web Experience</span><span class="work-year">2025</span>
+                            </div>
+                            <div class="work-item hover-t" data-em="◈"
+                                data-bg="linear-gradient(135deg,#001533,#002966)">
+                                <span class="work-num">03</span><span class="work-name">Axiom Interface</span>
+                                <span class="work-type">Product Design / Dev</span><span class="work-year">2024</span>
+                            </div>
+                            <div class="work-item hover-t" data-em="✦"
+                                data-bg="linear-gradient(135deg,#1a0a00,#3d2200)">
+                                <span class="work-num">04</span><span class="work-name">Obsidian Core</span>
+                                <span class="work-type">Motion / Visual System</span><span class="work-year">2024</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- ⑤  MANIFESTO -->
+            <div class="stack-card" data-index="3" style="--card-index:3">
+                <div class="manifesto-zone">
+                    <div class="manifesto-stage" id="manifestoWrap">
+                        <p class="fill-text hover-t" id="fillText">
+                            We craft environments that refuse to be generic. Every pixel possesses a wild, architectural
+                            intent. Mass production is the enemy of digital art.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ⑥  PROCESS -->
+            <div class="stack-card" data-index="4" style="--card-index:4">
+                <div class="process-zone">
+                    <section class="process-inner">
+                        <div class="sec-head">
+                            <div>
+                                <div class="sec-label">[ 02 — How We Work ]</div>
+                                <h2 class="sec-title">The<br>Process.</h2>
+                            </div>
+                        </div>
+                        <div class="process-list">
+                            <div class="process-item hover-t">
+                                <span class="pnum">01</span>
+                                <span class="pname">Discover &amp;<br>Define</span>
+                                <div>
+                                    <p class="pdesc">We immerse ourselves in your world — understanding your audience,
+                                        competitive landscape, and the invisible forces shaping your industry. This
+                                        phase
+                                        strips away assumptions.</p>
+                                    <div class="ptags"><span class="ptag">Research</span><span
+                                            class="ptag">Strategy</span><span class="ptag">Positioning</span></div>
+                                </div>
+                            </div>
+                            <div class="process-item hover-t">
+                                <span class="pnum">02</span>
+                                <span class="pname">Architect &amp;<br>Design</span>
+                                <div>
+                                    <p class="pdesc">Form follows friction. We design systems architecturally sound and
+                                        aesthetically inevitable — where every decision carries intent and every pixel
+                                        earns
+                                        its place.</p>
+                                    <div class="ptags"><span class="ptag">UI/UX</span><span class="ptag">Systems
+                                            Design</span><span class="ptag">Motion</span></div>
+                                </div>
+                            </div>
+                            <div class="process-item hover-t">
+                                <span class="pnum">03</span>
+                                <span class="pname">Build &amp;<br>Ship</span>
+                                <div>
+                                    <p class="pdesc">We engineer experiences with the same precision we design them.
+                                        Performance is non-negotiable. The final product must be indistinguishable from
+                                        the
+                                        vision — alive, responsive, real.</p>
+                                    <div class="ptags"><span class="ptag">Development</span><span
+                                            class="ptag">WebGL</span><span class="ptag">QA</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- ⑦  JOURNEY CARDS -->
+            <div class="stack-card" data-index="5" style="--card-index:5">
+                <section class="journey-section" id="journeySection">
+                    <div class="journey-sticky">
+                        <h2 class="j-title hover-t" id="jTitle">Where are you <span>in</span> your journey?</h2>
+                        <div id="jFade" class="j-fade">
+                            <div id="jScale" class="j-scale">
+                                <div class="cards-row" id="cardsRow">
+                                    <div class="cw c1">
+                                        <div class="card-inner">
+                                            <div class="card-face card-back"></div>
+                                            <div class="card-face card-front hover-t">
+                                                <div class="card-icon">↗</div>
+                                                <div>
+                                                    <div class="card-title">Going<br>Zero to One</div>
+                                                    <div class="card-desc">Navigating a new venture or breaking into a
+                                                        new
+                                                        market. We build the foundation.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cw c2">
+                                        <div class="card-inner">
+                                            <div class="card-face card-back"></div>
+                                            <div class="card-face card-front hover-t">
+                                                <div class="card-icon">ஃ</div>
+                                                <div>
+                                                    <div class="card-title">Scaling from<br>One to N</div>
+                                                    <div class="card-desc">You've achieved Product/Market Fit. Now we
+                                                        architect systems that scale without compromise.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cw c3">
+                                        <div class="card-inner">
+                                            <div class="card-face card-back"></div>
+                                            <div class="card-face card-front hover-t">
+                                                <div class="card-icon">✧</div>
+                                                <div>
+                                                    <div class="card-title">Need Quick<br>Solutions</div>
+                                                    <div class="card-desc">You know exactly what you want. We step in
+                                                        and
+                                                        execute with precision and speed.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+            <!-- ⑧  CTA -->
+            <div class="stack-card" data-index="6" style="--card-index:6">
+                <div class="cta-zone">
+                    <canvas id="cta-glcanvas"></canvas>
+                    <section class="cta-inner">
+                        <div class="cta-eye">[ Let's Build Something ]</div>
+                        <h2 class="cta-title hover-t">Start your<br><em>project.</em></h2>
+                        <p class="cta-sub">We turn bold ideas into digital experiences that push boundaries.<br>No
+                            templates. No compromises. Just pure, architectural intent.</p>
+                        <div class="cta-btns">
+                            <button class="btn-p hover-t">Get in Touch</button>
+                            <button class="btn-g hover-t">View Pricing</button>
+                        </div>
+                        <div class="cta-trust">
+                            <span class="cta-trust-item">✦ 47 Projects Shipped</span>
+                            <span class="cta-trust-divider">·</span>
+                            <span class="cta-trust-item">✦ 98% Client Satisfaction</span>
+                            <span class="cta-trust-divider">·</span>
+                            <span class="cta-trust-item">✦ Available Now</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- ⑨  FOOTER -->
+            <footer>
+                <div class="foot-logo hover-t">noexit.</div>
+                <nav class="foot-links">
+                    <a class="hover-t" href="#">Process</a>
+                    <a class="hover-t" href="#">Work</a>
+                    <a class="hover-t" href="#">Journal</a>
+                    <a class="hover-t" href="#">Contact</a>
+                </nav>
+                <div class="foot-copy">© 2026 NOEXIT SYSTEMS</div>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="preloader.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>

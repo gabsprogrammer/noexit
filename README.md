@@ -27,6 +27,16 @@ Não se trata apenas de uma aplicação, mas de um estudo profundo sobre **Desig
 - **Arquitetura Baseada em Componentes:** Código React perfeitamente encapsulado, limpo e reutilizável.
 - **Build Otimizado:** Processamento em tempo real através do ecossistema moderno e rápido do Vite.
 
+## 📸 Capturas de Tela (UI/UX)
+
+<div align="center">
+  <img src="docs/screenshot1.png" alt="NoExit Hero Section" width="80%"/>
+  <br><i>Apresentação Imersiva (Hero Section)</i><br><br>
+  
+  <img src="docs/screenshot2.png" alt="NoExit Features Section" width="80%"/>
+  <br><i>Elementos Interativos e Design Minimalista</i>
+</div>
+
 ## 📂 Visão Técnica & Estrutura
 
 Ao acessar o sistema, os usuários são recebidos por um hero-banner animado e elementos de interface vitrificada (Glassmorphism), criando uma sensação imediata de profundidade. As interações, cliques e rolagens são cuidadosamente roteirizadas para responder sem atraso, entregando o famoso "efeito wow" na primeira impressão.
